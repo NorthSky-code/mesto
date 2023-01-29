@@ -16,3 +16,5 @@ ___
 * Методология БЭМ
   * БЭМ (Nested)
 ___
+
+![Иллюстрация к проекту](https://github.com/NorthSky-code/mesto/blob/main/Mesto.png)
