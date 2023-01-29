@@ -1,0 +1,12 @@
+.button__heart {
+	width: 22px;
+	height: 19px;
+	margin: 5px 5px 1px 0px;
+	padding-left: 22px;
+	background-image: url(../../../images/Vector_heart.svg);
+	background-size: 22px 19px;
+}
+
+.button__heart:hover {
+	opacity: 0.5;
+}

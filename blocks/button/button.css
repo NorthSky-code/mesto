@@ -1,0 +1,19 @@
+.button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	display: block;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	box-sizing: border-box;
+	cursor: pointer;
+	transition-duration: 0.5s;
+	color: #FFFFFF;
+}
+
+.button:hover {
+	opacity: 0.6;
+	transition-duration: 0.5s;
+}

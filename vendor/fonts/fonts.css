@@ -11,11 +11,11 @@
 @font-face {
 	font-family: 'Inter';
 	font-style: normal;
-	font-weight: 700;
+	font-weight: 500;
 	src:
-		url('./Inter/Inter-Bold.woff2') format('woff2'),
-		url('./Inter/Inter-Bold.woff') format('woff'),
-		url('./Inter/Inter-Bold.ttf') format('truetype');
+		url('./Inter/Inter-Medium.woff2') format('woff2'),
+		url('./Inter/Inter-Medium.woff') format('woff'),
+		url('./Inter/Inter-Medium.ttf') format('truetype');
 }
 
 @font-face {
