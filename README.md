@@ -17,4 +17,6 @@ ___
   * БЭМ (Nested)
 ___
 
+[Cсылка на проект](https://northsky-code.github.io/mesto/)
+
 ![Иллюстрация к проекту](https://github.com/NorthSky-code/mesto/blob/main/Mesto.png)
