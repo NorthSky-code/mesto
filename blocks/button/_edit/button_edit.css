@@ -5,7 +5,6 @@
 	margin-top: 15px;
 	background-image: url(../../../images/Vector_edit-btn.svg);
 	background-size: 10px;
-	display: block;
 }
 
 @media screen and (max-width: 767px) {

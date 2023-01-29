@@ -1,6 +1,7 @@
 .profile__subtitle {
 	margin: 0;
 	padding: 0;
+	width: 100%;
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 1.22;
@@ -15,5 +16,6 @@
 	.profile__subtitle {
 		font-size: 14px;
 		line-height: 1.21;
+		text-align: center;
 	}
 }
