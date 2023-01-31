@@ -1,4 +1,4 @@
-.button_heart {
+.button_type_heart {
 	width: 22px;
 	height: 19px;
 	max-width: 100%;
@@ -8,6 +8,6 @@
 	background-size: 22px 19px;
 }
 
-.button_heart:hover {
+.button_type_heart:hover {
 	opacity: 0.5;
 }

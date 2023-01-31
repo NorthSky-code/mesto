@@ -2,6 +2,7 @@
 	margin: 0;
 	padding: 0 0 13px;
 	box-sizing: border-box;
+	display: block;
 	outline: 0;
 	border: 0;
 	width: 100%;

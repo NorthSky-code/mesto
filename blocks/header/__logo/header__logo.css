@@ -2,7 +2,7 @@
 	max-width: 142px;
 	height: 33px;
 	width: 100%;
-	object-fit: fill;
+	object-fit: cover;
 	display: block;
 	box-sizing: border-box;
 }

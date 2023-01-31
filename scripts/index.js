@@ -1,44 +1,35 @@
 let container = document.querySelector('.content');
 let popup = document.querySelector('.popup');
-let buttonEdit = container.querySelector('.button_edit');
-let buttonClose = popup.querySelector('.button_close');
-
-function toggleButtonOpen() {
-	popup.classList.toggle('popup_opened');
-}
-
-function handleButtonEditClick() {
-	toggleButtonOpen();
-}
-function handleButtonCloseClick() {
-	toggleButtonOpen();
-}
-
-buttonEdit.addEventListener('click', handleButtonEditClick);
-buttonClose.addEventListener('click', handleButtonCloseClick);
-
+let buttonEdit = container.querySelector('.button_type_edit');
+let profileName = container.querySelector('.profile__title');
+let profileJob = container.querySelector('.profile__subtitle');
+let buttonClose = popup.querySelector('.button_type_close');
 let popupForm = popup.querySelector('.popup__content');
 let popupUserName = popupForm.querySelector('.popup__input_user_name');
 let popupUserJob = popupForm.querySelector('.popup__input_user_job');
-let popupButtonSave = popupForm.querySelector('.button_save');
+let popupButtonSave = popupForm.querySelector('.button_type_save');
 
+// Открыть модальное окно "Редактировать профиль"
+function handleOpenPopupClick() {
+	popup.classList.add('popup_opened');
+	popupUserName.value = profileName.textContent;
+	popupUserJob.value = profileJob.textContent;
+};
+function handleClosePopupClick() {
+	popup.classList.remove('popup_opened');
+};
 
+buttonEdit.addEventListener('click', handleOpenPopupClick);
+buttonClose.addEventListener('click', handleClosePopupClick);
+
+// Сохранить изменение в модальном окне с автозакрытием после сохранения
 function handleFormSubmit(evt) {
 	evt.preventDefault();
 
-	let userName = popupUserName.value;
-	let userJob = popupUserJob.value;
+	profileName.textContent = popupUserName.value;
+	profileJob.textContent = popupUserJob.value;
 
-	let profileName = container.querySelector('.profile__title');
-	let profileJob = container.querySelector('.profile__subtitle');
-
-	profileName.textContent = userName;
-	profileJob.textContent = userJob;
+	popupButtonSave.addEventListener('click', handleClosePopupClick);
 }
+
 popupForm.addEventListener('submit', handleFormSubmit);
-
-function handlePopupButtonSaveClick() {
-	popup.classList.remove('popup_opened');
-}
-
-popupButtonSave.addEventListener('click', handlePopupButtonSaveClick);

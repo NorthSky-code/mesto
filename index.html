@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
@@ -21,10 +21,10 @@
 					<div class="profile__info">
 						<h1 class="profile__title">Жак-Ив Кусто</h1>
 						<p class="profile__subtitle">Исследователь океана</p>
-						<button class="button button_edit"></button>
+						<button type="button" class="button button_type_edit"></button>
 					</div>
 				</div>
-				<button class="button button_add"></button>
+				<button type="button" class="button button_type_add"></button>
 			</section>
 			<section class="cards" aria-label="Фотогалерея">
 				<article class="card">
@@ -32,7 +32,7 @@
 						class="card__image">
 					<div class="card__text">
 						<h2 class="card__title">Карачаевск</h2>
-						<button class="button button_heart"></button>
+						<button type="button" class="button button_type_heart"></button>
 					</div>
 				</article>
 				<article class="card">
@@ -40,7 +40,7 @@
 						class="card__image">
 					<div class="card__text">
 						<h2 class="card__title">Гора Эльбрус</h2>
-						<button class="button button_heart"></button>
+						<button type="button" class="button button_type_heart"></button>
 					</div>
 				</article>
 				<article class="card">
@@ -48,7 +48,7 @@
 						class="card__image">
 					<div class="card__text">
 						<h2 class="card__title">Домбай</h2>
-						<button class="button button_heart"></button>
+						<button type="button" class="button button_type_heart"></button>
 					</div>
 				</article>
 				<article class="card">
@@ -56,7 +56,7 @@
 						class="card__image">
 					<div class="card__text">
 						<h2 class="card__title">Венеция</h2>
-						<button class="button button_heart"></button>
+						<button type="button" class="button button_type_heart"></button>
 					</div>
 				</article>
 				<article class="card">
@@ -64,7 +64,7 @@
 						class="card__image">
 					<div class="card__text">
 						<h2 class="card__title">Закат</h2>
-						<button class="button button_heart"></button>
+						<button type="button" class="button button_type_heart"></button>
 					</div>
 				</article>
 				<article class="card">
@@ -72,7 +72,7 @@
 						class="card__image">
 					<div class="card__text">
 						<h2 class="card__title">Карачаево-Черкесия</h2>
-						<button class="button button_heart"></button>
+						<button type="button" class="button button_type_heart"></button>
 					</div>
 				</article>
 			</section>
@@ -83,16 +83,12 @@
 	</div>
 	<div class="popup">
 		<div class="popup__container">
-			<button class="button button_close"></button>
-			<form action="#" method="post" class="popup__content">
+			<button type="button" class="button button_type_close"></button>
+			<form name="form" class="popup__content">
 				<h2 class="popup__edit-profile">Редактировать профиль</h2>
-				<p class="popup__user">
-					<input type="text" name="name" value="Жак-Ив Кусто" class="popup__input popup__input_user_name">
-				</p>
-				<p class="popup__job">
-					<input type="text" name="job" value="Исследователь океана" class="popup__input popup__input_user_job">
-				</p>
-				<button type="submit" class="button button_save">Сохранить</button>
+				<input type="text" name="name" class="popup__input popup__input_user_name">
+				<input type="text" name="job" class="popup__input popup__input_user_job">
+				<button type="submit" class="button button_type_save">Сохранить</button>
 			</form>
 		</div>
 	</div>
