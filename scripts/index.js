@@ -29,7 +29,7 @@ function handleFormSubmit(evt) {
 	profileName.textContent = popupUserName.value;
 	profileJob.textContent = popupUserJob.value;
 
-	popupButtonSave.addEventListener('click', handleClosePopupClick);
+	handleClosePopupClick();
 }
 
 popupForm.addEventListener('submit', handleFormSubmit);
