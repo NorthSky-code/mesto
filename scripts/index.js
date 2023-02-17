@@ -13,7 +13,7 @@ const popupUserJob = popupFormProfile.querySelector('.popup__input_user_job');
 const popupProfile = document.querySelector('.popup-profile');
 const buttonProfile = container.querySelector('.button_type_edit');
 const buttonProfileClose = document.querySelector('.button_close_profile');
-const buttonSubmitProfile = popupFormProfile.querySelector('.button__submit_type_save');
+const buttonSubmitProfile = popupFormProfile.querySelector('.button__form_type_save');
 
 const popupFormCard = document.querySelector('.popup__content-card');
 const popupLinkCard = document.querySelector('.popup__input_image_link');
@@ -22,7 +22,7 @@ const popupNameCard = document.querySelector('.popup__input_image_name');
 const popupAddCard = document.querySelector('.popup-card');
 const buttonAddCard = container.querySelector('.button_type_add');
 const buttonAddCardClose = document.querySelector('.button_close_add');
-const buttonSubmitCard = popupFormCard.querySelector('.button__submit_type_create');
+const buttonSubmitCard = popupFormCard.querySelector('.button__form_type_create');
 
 const popupImageBox = document.querySelector('.popup-image');
 const popupImage = document.querySelector('.popup__image');

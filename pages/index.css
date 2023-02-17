@@ -22,7 +22,7 @@
 @import url(../blocks/button/_type/button_type_edit.css);
 @import url(../blocks/button/_type/button_type_add.css);
 @import url(../blocks/button/_type/button_type_close.css);
-@import url(../blocks/button/__submit/button__submit.css);
+@import url(../blocks/button/__form/button__form.css);
 @import url(../blocks/button/_type/button_type_delete.css);
 
 @import url(../blocks/cards/cards.css);

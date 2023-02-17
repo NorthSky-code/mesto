@@ -1,4 +1,4 @@
-.button__submit {
+.button__form {
 	width: 358px;
 	height: 50px;
 	background-color: #000000;
@@ -10,12 +10,12 @@
 	margin-top: 18px;
 }
 
-.button__submit:hover {
+.button__form:hover {
 	opacity: 0.8;
 }
 
 @media screen and (max-width: 767px) {
-	.button__submit {
+	.button__form {
 		width: 238px;
 		height: 46px;
 		font-size: 14px;
