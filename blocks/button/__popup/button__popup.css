@@ -1,4 +1,4 @@
-.button__form {
+.button__popup {
 	width: 358px;
 	height: 50px;
 	background-color: #000000;
@@ -10,12 +10,12 @@
 	margin-top: 18px;
 }
 
-.button__form:hover {
+.button__popup:hover {
 	opacity: 0.8;
 }
 
 @media screen and (max-width: 767px) {
-	.button__form {
+	.button__popup {
 		width: 238px;
 		height: 46px;
 		font-size: 14px;
