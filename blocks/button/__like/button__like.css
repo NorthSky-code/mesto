@@ -1,13 +1,13 @@
-.button_type_heart {
+.button__like {
 	width: 22px;
 	height: 19px;
 	max-width: 100%;
 	margin: 5px 5px 0 0;
 	padding-left: 22px;
-	background-image: url(../../../images/Vector_heart.svg);
+	background: url(../../../images/Vector_heart.svg);
 	background-size: 22px 19px;
 }
 
-.button_type_heart:hover {
-	opacity: 0.5;
+.button__like:hover {
+	transition-duration: 0s;
 }
