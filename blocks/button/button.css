@@ -9,11 +9,10 @@
 	background-position: center;
 	box-sizing: border-box;
 	cursor: pointer;
-	transition-duration: 0.5s;
+	transition: opacity .3s linear;
 	color: #FFFFFF;
 }
 
 .button:hover {
 	opacity: 0.6;
-	transition-duration: 0.5s;
 }

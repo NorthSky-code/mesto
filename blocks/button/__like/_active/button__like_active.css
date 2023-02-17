@@ -1,8 +1,3 @@
 .button__like_active {
-	background: url(/images/Vector_heart_active.svg);
-}
-
-
-.button__like_active:hover {
-	transition-duration: 0s;
+	background: url(../../../../images/Vector_heart_active.svg);
 }

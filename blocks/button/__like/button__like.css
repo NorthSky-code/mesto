@@ -9,5 +9,5 @@
 }
 
 .button__like:hover {
-	transition-duration: 0s;
+	opacity: 0.5;
 }
