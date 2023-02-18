@@ -2,6 +2,7 @@
 const container = document.querySelector('.content');
 const cardContainer = container.querySelector('.cards');
 const popup = document.querySelector('.popup');
+const templateCard = document.querySelector('.card-template').content.querySelector('.card');
 
 const profileName = container.querySelector('.profile__title');
 const profileJob = container.querySelector('.profile__subtitle');
@@ -12,8 +13,9 @@ const popupUserJob = popupFormProfile.querySelector('.popup__input_user_job');
 
 const popupProfile = document.querySelector('.popup-profile');
 const buttonProfile = container.querySelector('.button_type_edit');
-const buttonProfileClose = document.querySelector('.button_close_profile');
 const buttonSubmitProfile = popupFormProfile.querySelector('.button_type_save');
+
+const buttonsPopupClose = document.querySelectorAll('.button_type_close');
 
 const popupFormCard = document.querySelector('.popup__content-card');
 const popupLinkCard = document.querySelector('.popup__input_image_link');
@@ -21,13 +23,11 @@ const popupNameCard = document.querySelector('.popup__input_image_name');
 
 const popupAddCard = document.querySelector('.popup-card');
 const buttonAddCard = container.querySelector('.button_type_add');
-const buttonAddCardClose = document.querySelector('.button_close_add');
 const buttonSubmitCard = popupFormCard.querySelector('.button_type_create');
 
 const popupImageBox = document.querySelector('.popup-image');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
-const buttonImageClose = document.querySelector('.button_close_image');
 
 // Массив данных для карточек
 const initialCards = [
@@ -60,8 +60,6 @@ const initialCards = [
 // Функция открытие и закрытие модального окна
 const handleOpenPopup = (popup) => {
 	popup.classList.add('popup_opened');
-	popupUserName.value = profileName.textContent;
-	popupUserJob.value = profileJob.textContent;
 };
 
 const handleClosePopup = (popup) => {
@@ -71,16 +69,19 @@ const handleClosePopup = (popup) => {
 //Открытие и закрытие модального окна
 buttonProfile.addEventListener('click', () => {
 	handleOpenPopup(popupProfile);
-});
-buttonProfileClose.addEventListener('click', () => {
-	handleClosePopup(popupProfile);
+	popupUserName.value = profileName.textContent;
+	popupUserJob.value = profileJob.textContent;
 });
 
 buttonAddCard.addEventListener('click', () => {
 	handleOpenPopup(popupAddCard);
 });
-buttonAddCardClose.addEventListener('click', () => {
-	handleClosePopup(popupAddCard);
+
+buttonsPopupClose.forEach((button) => {
+	const popup = button.closest('.popup');
+	button.addEventListener('click', () => {
+		handleClosePopup(popup);
+	});
 });
 
 // Сохранить изменение в модальном окне с автозакрытием после сохранения
@@ -89,12 +90,12 @@ const handleFormProfileSubmit = (evt) => {
 	profileName.textContent = popupUserName.value;
 	profileJob.textContent = popupUserJob.value;
 	handleClosePopup(popupProfile);
+	evt.target.reset();
 }
 
 // Функция для создание карточки
 const addCard = (link, name) => {
-	const templateCard = document.querySelector('.card-template').content;
-	const cardElement = templateCard.querySelector('.card').cloneNode(true);
+	const cardElement = templateCard.cloneNode(true);
 	const cardImage = cardElement.querySelector('.card__image');
 	const cardName = cardElement.querySelector('.card__title');
 
@@ -117,10 +118,6 @@ const addCard = (link, name) => {
 		handleOpenPopup(popupImageBox);
 	});
 
-	buttonImageClose.addEventListener('click', () => {
-		handleClosePopup(popupImageBox);
-	});
-
 	return cardElement;
 };
 
@@ -139,8 +136,7 @@ const handleFormCardSubmit = (evt) => {
 	cardContainer.prepend(addCard(popupLinkCard.value, popupNameCard.value));
 	handleClosePopup(popupAddCard);
 
-	popupLinkCard.value = '';
-	popupNameCard.value = '';
+	evt.target.reset();
 }
 
 // Отправка формы
