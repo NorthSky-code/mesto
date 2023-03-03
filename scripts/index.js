@@ -2,6 +2,7 @@
 const container = document.querySelector('.content');
 const cardContainer = container.querySelector('.cards');
 const popup = document.querySelector('.popup');
+const popupList = document.querySelectorAll('.popup');
 const templateCard = document.querySelector('.card-template').content.querySelector('.card');
 
 const profileName = container.querySelector('.profile__title');
@@ -66,6 +67,20 @@ const handleClosePopup = (popup) => {
 	popup.classList.remove('popup_opened');
 };
 
+//Функция закрытия модального окна кликом на фон и клавишой 'Escape'
+popupList.forEach((popup) => {
+	document.addEventListener('keydown', (evt) => {
+		if (evt.key === 'Escape') {
+			handleClosePopup(popup);
+		}
+	});
+	popup.addEventListener('click', (evt) => {
+		if (evt.target === evt.currentTarget) {
+			handleClosePopup(popup);
+		}
+	});
+});
+
 //Открытие и закрытие модального окна
 buttonProfile.addEventListener('click', () => {
 	handleOpenPopup(popupProfile);
@@ -91,7 +106,7 @@ const handleFormProfileSubmit = (evt) => {
 	profileJob.textContent = popupUserJob.value;
 	handleClosePopup(popupProfile);
 	evt.target.reset();
-}
+};
 
 // Функция для создание карточки
 const addCard = (link, name) => {
