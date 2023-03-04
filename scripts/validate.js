@@ -1,8 +1,8 @@
 const validationConfig = {
 	formSelector: '.popup__content',
 	inputSelector: '.popup__input',
-	submitButtonSelector: '.button__popup',
-	inactiveButtonClass: 'button__popup_disabled',
+	submitButtonSelector: '.button__submit',
+	inactiveButtonClass: 'button__submit_disabled',
 	inputErrorClass: 'popup__input_type_error',
 	errorClass: 'popup__error_visible'
 };
