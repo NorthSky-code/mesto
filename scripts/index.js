@@ -11,7 +11,7 @@ const popupUserName = popupFormProfile.querySelector('.popup__input_user_name');
 const popupUserJob = popupFormProfile.querySelector('.popup__input_user_job');
 
 const popupProfile = document.querySelector('.popup-profile');
-const buttonProfile = container.querySelector('.button_type_edit');
+const buttonOpenProfile = container.querySelector('.button_type_edit');
 
 const buttonsPopupClose = document.querySelectorAll('.button_type_close');
 
@@ -26,7 +26,7 @@ const popupImageBox = document.querySelector('.popup-image');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 
-// Функция открытие и закрытие модального окна
+// Функция закрытия модального окна "Escape"
 const popupCloseKey = (evt) => {
 	if (evt.key === 'Escape') {
 		const popups = document.querySelector('.popup_opened');
@@ -34,6 +34,7 @@ const popupCloseKey = (evt) => {
 	}
 };
 
+// Функция закрытия модального окна "Overlay"
 const popupCloseClickOverlay = (evt) => {
 	if (evt.target === evt.currentTarget) {
 		const popups = document.querySelector('.popup_opened');
@@ -41,6 +42,7 @@ const popupCloseClickOverlay = (evt) => {
 	}
 };
 
+//Открытие и закрытие модального окна
 const handleOpenPopup = (popup) => {
 	popup.classList.add('popup_opened');
 	document.addEventListener('keydown', popupCloseKey);
@@ -53,24 +55,6 @@ const handleClosePopup = (popup) => {
 	popup.removeEventListener('click', popupCloseClickOverlay);
 };
 
-//Открытие и закрытие модального окна
-buttonProfile.addEventListener('click', () => {
-	handleOpenPopup(popupProfile);
-	popupUserName.value = profileName.textContent;
-	popupUserJob.value = profileJob.textContent;
-});
-
-buttonCreateCard.addEventListener('click', () => {
-	handleOpenPopup(popupCreateCard);
-});
-
-buttonsPopupClose.forEach((button) => {
-	const popup = button.closest('.popup');
-	button.addEventListener('click', () => {
-		handleClosePopup(popup);
-	});
-});
-
 // Сохранить изменение в модальном окне с автозакрытием после сохранения
 const handleFormProfileSubmit = (evt) => {
 	evt.preventDefault();
@@ -79,27 +63,41 @@ const handleFormProfileSubmit = (evt) => {
 	handleClosePopup(popupProfile);
 };
 
-// Функция для создание карточки
-const createCard = (link, name) => {
+const handleOpenProfile = () => {
+	handleOpenPopup(popupProfile)
+	popupUserName.value = profileName.textContent;
+	popupUserJob.value = profileJob.textContent;
+};
+
+// Функция добавление карточки
+const renderCard = (cardData, сontainer) => {
+	сontainer.prepend(createCard(cardData));
+};
+
+// Функция создание карточки
+const createCard = (cardData) => {
 	const cardElement = templateCard.cloneNode(true);
 	const cardImage = cardElement.querySelector('.card__image');
 	const cardName = cardElement.querySelector('.card__title');
 
-	cardImage.src = link;
-	cardImage.alt = name;
-	cardName.textContent = name;
+	cardImage.src = cardData.link;
+	cardImage.alt = cardData.name;
+	cardName.textContent = cardData.name;
 
-	cardElement.querySelector('.button__like').addEventListener('click', function (evt) {
-		evt.target.classList.toggle('button__like_active');
+	const buttonLike = cardElement.querySelector('.button__like');
+	buttonLike.addEventListener('click', () => {
+		buttonLike.classList.toggle('button__like_active');
 	});
-	cardElement.querySelector('.button_type_delete').addEventListener('click', function (evt) {
-		evt.target.closest('.card').remove();
+	const card = cardElement;
+	const buttonDelete = cardElement.querySelector('.button_type_delete');
+	buttonDelete.addEventListener('click', () => {
+		card.remove();
 	});
 
 	cardImage.addEventListener('click', () => {
-		popupImage.src = link;
-		popupImage.alt = name;
-		popupCaption.textContent = name;
+		popupImage.src = cardData.link;
+		popupImage.alt = cardData.name;
+		popupCaption.textContent = cardData.name;
 
 		handleOpenPopup(popupImageBox);
 	});
@@ -107,24 +105,37 @@ const createCard = (link, name) => {
 	return cardElement;
 };
 
-// Добавление карточек в DOM
-const renderCard = (link, name) => {
-	cardsContainer.append(createCard(link, name));
-};
-
-initialCards.forEach((element) => {
-	renderCard(element.link, element.name);
-});
-
 // Создать карточку с переданными данными
 const handleFormCardSubmit = (evt) => {
 	evt.preventDefault();
-	cardsContainer.prepend(createCard(popupLinkCard.value, popupNameCard.value));
+	renderCard(
+		(cardData = {
+			link: popupLinkCard.value,
+			name: popupNameCard.value,
+		}),
+		cardsContainer);
 	handleClosePopup(popupCreateCard);
 
 	evt.target.reset();
 }
 
-// Отправка формы
+// Перебор массива
+buttonsPopupClose.forEach((button) => {
+	const popup = button.closest('.popup');
+	button.addEventListener('click', () => {
+		handleClosePopup(popup);
+	});
+});
+
+initialCards.forEach((cardData) => {
+	renderCard(cardData, cardsContainer);
+});
+
+// Обработчик событий
+buttonCreateCard.addEventListener('click', () => {
+	handleOpenPopup(popupCreateCard);
+});
+
+buttonOpenProfile.addEventListener('click', handleOpenProfile);
 popupFormProfile.addEventListener('submit', handleFormProfileSubmit);
 popupFormCard.addEventListener('submit', handleFormCardSubmit);
