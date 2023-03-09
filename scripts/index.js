@@ -12,6 +12,7 @@ const popupUserJob = popupFormProfile.querySelector('.popup__input_user_job');
 
 const popupProfile = document.querySelector('.popup-profile');
 const buttonOpenProfile = container.querySelector('.button_type_edit');
+const buttonSaveProfile = document.querySelector('.button_type_save');
 
 const buttonsPopupClose = document.querySelectorAll('.button_type_close');
 
@@ -20,7 +21,8 @@ const popupLinkCard = document.querySelector('.popup__input_image_link');
 const popupNameCard = document.querySelector('.popup__input_image_name');
 
 const popupCreateCard = document.querySelector('.popup-card');
-const buttonCreateCard = container.querySelector('.button_type_add');
+const buttonAddCard = container.querySelector('.button_type_add');
+const buttonCreateCard = document.querySelector('.button_type_create');
 
 const popupImageBox = document.querySelector('.popup-image');
 const popupImage = document.querySelector('.popup__image');
@@ -67,7 +69,13 @@ const handleOpenProfile = () => {
 	handleOpenPopup(popupProfile)
 	popupUserName.value = profileName.textContent;
 	popupUserJob.value = profileJob.textContent;
+	enableButton(buttonSaveProfile, validationConfig);
 };
+
+const handleOpenAddCard = () => {
+	handleOpenPopup(popupCreateCard);
+	disabledButton(buttonCreateCard, validationConfig);
+}
 
 // Функция добавление карточки
 const renderCard = (cardData, сontainer) => {
@@ -105,7 +113,7 @@ const createCard = (cardData) => {
 	return cardElement;
 };
 
-// Создать карточку с переданными данными
+// Добавить карточку с переданными данными
 const handleFormCardSubmit = (evt) => {
 	evt.preventDefault();
 	renderCard(
@@ -114,6 +122,7 @@ const handleFormCardSubmit = (evt) => {
 			name: popupNameCard.value,
 		}),
 		cardsContainer);
+
 	handleClosePopup(popupCreateCard);
 
 	evt.target.reset();
@@ -132,10 +141,7 @@ initialCards.forEach((cardData) => {
 });
 
 // Обработчик событий
-buttonCreateCard.addEventListener('click', () => {
-	handleOpenPopup(popupCreateCard);
-});
-
+buttonAddCard.addEventListener('click', handleOpenAddCard);
 buttonOpenProfile.addEventListener('click', handleOpenProfile);
 popupFormProfile.addEventListener('submit', handleFormProfileSubmit);
 popupFormCard.addEventListener('submit', handleFormCardSubmit);
