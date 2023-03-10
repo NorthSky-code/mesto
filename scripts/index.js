@@ -2,6 +2,7 @@
 const container = document.querySelector('.content');
 const cardsContainer = container.querySelector('.cards');
 const templateCard = document.querySelector('.card-template').content.querySelector('.card');
+const popupList = document.querySelectorAll('.popup');
 
 const profileName = container.querySelector('.profile__title');
 const profileJob = container.querySelector('.profile__subtitle');
@@ -29,35 +30,32 @@ const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 
 // Функция закрытия модального окна "Escape"
-const popupCloseKey = (evt) => {
+const handleClosePopupByEsc = (evt) => {
 	if (evt.key === 'Escape') {
-		const popups = document.querySelector('.popup_opened');
-		handleClosePopup(popups);
+		const popupOpened = document.querySelector('.popup_opened');
+		handleClosePopup(popupOpened);
 	}
 };
 
 // Функция закрытия модального окна "Overlay"
-const popupCloseClickOverlay = (evt) => {
+const handleClosePopupByOverlay = (evt) => {
 	if (evt.target === evt.currentTarget) {
-		const popups = document.querySelector('.popup_opened');
-		handleClosePopup(popups);
+		handleClosePopup(evt.target);
 	}
 };
 
 //Открытие и закрытие модального окна
 const handleOpenPopup = (popup) => {
 	popup.classList.add('popup_opened');
-	document.addEventListener('keydown', popupCloseKey);
-	popup.addEventListener('click', popupCloseClickOverlay);
+	document.addEventListener('keydown', handleClosePopupByEsc);
 };
 
 const handleClosePopup = (popup) => {
 	popup.classList.remove('popup_opened');
-	document.removeEventListener('keydown', popupCloseKey);
-	popup.removeEventListener('click', popupCloseClickOverlay);
-};
+	document.removeEventListener('keydown', handleClosePopupByEsc);
+}
 
-// Сохранить изменение в модальном окне с автозакрытием после сохранения
+// Сохранить изменение в модальном окне
 const handleFormProfileSubmit = (evt) => {
 	evt.preventDefault();
 	profileName.textContent = popupUserName.value;
@@ -74,7 +72,7 @@ const handleOpenProfile = () => {
 
 const handleOpenAddCard = () => {
 	handleOpenPopup(popupCreateCard);
-	disabledButton(buttonCreateCard, validationConfig);
+	disableButton(buttonCreateCard, validationConfig);
 }
 
 // Функция добавление карточки
@@ -96,10 +94,9 @@ const createCard = (cardData) => {
 	buttonLike.addEventListener('click', () => {
 		buttonLike.classList.toggle('button__like_active');
 	});
-	const card = cardElement;
 	const buttonDelete = cardElement.querySelector('.button_type_delete');
 	buttonDelete.addEventListener('click', () => {
-		card.remove();
+		cardElement.remove();
 	});
 
 	cardImage.addEventListener('click', () => {
@@ -116,12 +113,10 @@ const createCard = (cardData) => {
 // Добавить карточку с переданными данными
 const handleFormCardSubmit = (evt) => {
 	evt.preventDefault();
-	renderCard(
-		(cardData = {
-			link: popupLinkCard.value,
-			name: popupNameCard.value,
-		}),
-		cardsContainer);
+	renderCard(({
+		link: popupLinkCard.value,
+		name: popupNameCard.value,
+	}), cardsContainer);
 
 	handleClosePopup(popupCreateCard);
 
@@ -134,6 +129,10 @@ buttonsPopupClose.forEach((button) => {
 	button.addEventListener('click', () => {
 		handleClosePopup(popup);
 	});
+});
+
+popupList.forEach((popup) => {
+	popup.addEventListener('click', handleClosePopupByOverlay);
 });
 
 initialCards.forEach((cardData) => {
