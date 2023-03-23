@@ -59,6 +59,4 @@ class Card {
 		return this._element;
 	}
 }
-
-
 export { Card };
