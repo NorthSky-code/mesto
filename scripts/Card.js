@@ -60,4 +60,8 @@ class Card {
 	}
 }
 
+<<<<<<< HEAD:scripts/card.js
 export { Card };
+=======
+export { Card, initialCards };
+>>>>>>> 556d7f8ab57055bfb5d5927fb980ef622454106c:scripts/Card.js
