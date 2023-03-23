@@ -1,7 +1,7 @@
 /** Подключаемые модули */
-import { Card, initialCards } from './Card.js';
-import { handleOpenPopup, handleClosePopup, handleClosePopupByEsc } from './util.js'
+import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
+import { initialCards } from './constants.js';
 
 /** Переменные */
 const container = document.querySelector('.content');
@@ -27,6 +27,10 @@ const popupNameCard = document.querySelector('.popup__input_image_name');
 const popupCreateCard = document.querySelector('.popup-card');
 const buttonAddCard = container.querySelector('.button_type_add');
 
+const popupImageBox = document.querySelector('.popup-image');
+const popupImage = document.querySelector('.popup__image');
+const popupCaption = document.querySelector('.popup__caption');
+
 /**  Конфигурация свойств для валидации форм */
 const validationConfig = {
 	formSelector: '.popup__content',
@@ -38,17 +42,30 @@ const validationConfig = {
 };
 
 /** Валидация форм */
-const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
-formList.forEach((formElement) => {
-	const formValidator = new FormValidator(validationConfig, formElement);
-	formValidator.enableValidation();
-});
-
 const popupProfileValidation = new FormValidator(validationConfig, popupFormProfile);
 popupProfileValidation.enableValidation();
 
 const popupCreateCardValidation = new FormValidator(validationConfig, popupFormCard);
 popupCreateCardValidation.enableValidation();
+
+/** Открытие и закрытие модального окна */
+const handleOpenPopup = (popup) => {
+	popup.classList.add('popup_opened');
+	document.addEventListener('keydown', handleClosePopupByEsc);
+};
+
+const handleClosePopup = (popup) => {
+	popup.classList.remove('popup_opened');
+	document.removeEventListener('keydown', handleClosePopupByEsc);
+}
+
+/** Функция закрытия модального окна клавишей "Escape" */
+const handleClosePopupByEsc = (evt) => {
+	if (evt.key === 'Escape') {
+		const popupOpened = document.querySelector('.popup_opened');
+		handleClosePopup(popupOpened);
+	}
+};
 
 /** Функция закрытия модального окна "Overlay" */
 const handleClosePopupByOverlay = (evt) => {
@@ -71,11 +88,30 @@ const handleOpenProfile = () => {
 	popupUserName.value = profileName.textContent;
 	popupUserJob.value = profileJob.textContent;
 	popupProfileValidation.enableButton();
+	popupProfileValidation.resetError();
 };
 
 const handleOpenAddCard = () => {
 	handleOpenPopup(popupCreateCard);
 	popupCreateCardValidation.disableButton();
+}
+
+const handleOpenImage = (name, link) => {
+	popupImage.src = link;
+	popupImage.alt = name;
+	popupCaption.textContent = name;
+
+	handleOpenPopup(popupImageBox);
+}
+/** Функция добавление карточки */
+const renderCard = (item, container) => {
+	container.append(createCard(item));
+}
+
+/** Функция создание карточки */
+const createCard = (item) => {
+	const card = new Card(item, '.card-template', handleOpenImage);
+	return card.generateCard();
 }
 
 /** Добавить карточку с переданными данными */
@@ -100,20 +136,12 @@ buttonsPopupClose.forEach((button) => {
 });
 
 popupList.forEach((popup) => {
-	popup.addEventListener('click', handleClosePopupByOverlay);
+	popup.addEventListener('mousedown', handleClosePopupByOverlay);
 });
-
-/** Генерация карточки */
-const renderCard = (item) => {
-	const card = new Card(item, '.card-template');
-	const cardElement = card.generateCard();
-
-	document.querySelector('.cards').append(cardElement);
-}
 
 /** Перебор массива и добавление карточек */
 initialCards.forEach((item) => {
-	renderCard(item);
+	renderCard(item, cardsContainer);
 });
 
 /** Обработчики событий */
