@@ -105,7 +105,7 @@ const handleOpenImage = (name, link) => {
 }
 /** Функция добавление карточки */
 const renderCard = (item, container) => {
-	container.append(createCard(item));
+	container.prepend(createCard(item));
 }
 
 /** Функция создание карточки */
