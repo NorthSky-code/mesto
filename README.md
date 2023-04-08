@@ -19,8 +19,9 @@ ___
   * Подключение модулей 
 * Методология БЭМ
   * БЭМ (Nested)
+* Установили и настроиои Webpack
 ___
 
 [Cсылка на проект](https://northsky-code.github.io/mesto/)
 
-![Иллюстрация к проекту](https://github.com/NorthSky-code/mesto/blob/main/Mesto.png)
+![Иллюстрация к проекту](https://github.com/NorthSky-code/mesto/blob/main/src/Mesto.png)
