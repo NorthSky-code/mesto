@@ -35,6 +35,16 @@ const buttonOpenProfile = container.querySelector('.button_type_edit');
 const popupFormCard = document.querySelector('.popup__content-card');
 const buttonAddCard = container.querySelector('.button_type_add');
 
+/**  Конфигурация свойств для валидации форм */
+const validationConfig = {
+	formSelector: '.popup__content',
+	inputSelector: '.popup__input',
+	submitButtonSelector: '.popup__submit',
+	inactiveButtonClass: 'popup__submit_disabled',
+	inputErrorClass: 'popup__input_type_error',
+	errorClass: 'popup__error_visible'
+};
+
 export {
 	initialCards,
 	popupFormProfile,
@@ -42,5 +52,6 @@ export {
 	popupUserJob,
 	buttonOpenProfile,
 	popupFormCard,
-	buttonAddCard
+	buttonAddCard,
+	validationConfig
 };

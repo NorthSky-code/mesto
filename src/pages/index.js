@@ -1,11 +1,9 @@
-/** Подключаем файл стилей */
 import './index.css';
 
 /** Подключаем модули */
 import Card from '../components/Card.js';
 import Section from '../components/Section.js';
 import FormValidator from '../components/FormValidator.js';
-import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
@@ -18,18 +16,9 @@ import {
 	popupUserJob,
 	buttonOpenProfile,
 	popupFormCard,
-	buttonAddCard
+	buttonAddCard,
+	validationConfig
 } from '../utils/constants.js';
-
-/**  Конфигурация свойств для валидации форм */
-const validationConfig = {
-	formSelector: '.popup__content',
-	inputSelector: '.popup__input',
-	submitButtonSelector: '.popup__submit',
-	inactiveButtonClass: 'popup__submit_disabled',
-	inputErrorClass: 'popup__input_type_error',
-	errorClass: 'popup__error_visible'
-};
 
 /** Валидация форм */
 const popupProfileValidation = new FormValidator(validationConfig, popupFormProfile);
@@ -49,9 +38,8 @@ const handleOpenProfile = () => {
 }
 
 const handleOpenAddCard = () => {
-	const popup = new Popup('.popup-card');
+	popupFormCardSubmit.open();
 	popupCreateCardValidation.disableButton();
-	popup.open();
 }
 
 /** Открыть картинку по клику */

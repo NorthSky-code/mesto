@@ -1,17 +1,18 @@
 export default class Popup {
 	constructor(popupSelector) {
-		this._popupSelector = document.querySelector(popupSelector);
-		this._closeButton = this._popupSelector.querySelector('.button_type_close');
+		this._popup = document.querySelector(popupSelector);
+		this._closeButton = this._popup.querySelector('.button_type_close');
+		this._handleEscClose = this._handleEscClose.bind(this);
 	}
 	/** Метод открытия и закрытия модального окна */
 	open() {
-		this._popupSelector.classList.add('popup_opened');
-		document.addEventListener('keydown', (evt) => this._handleEscClose(evt));
+		this._popup.classList.add('popup_opened');
+		document.addEventListener('keydown', this._handleEscClose);
 	}
 
 	close() {
-		this._popupSelector.classList.remove('popup_opened');
-		document.removeEventListener('keydown', (evt) => this._handleEscClose(evt));
+		this._popup.classList.remove('popup_opened');
+		document.removeEventListener('keydown', this._handleEscClose);
 	}
 
 	/** Метод закрытия модального окна клавишей "Escape" */
@@ -31,6 +32,6 @@ export default class Popup {
 	/** Методы навешивания слушателей */
 	setEventListeners() {
 		this._closeButton.addEventListener('click', () => this.close());
-		this._popupSelector.addEventListener('mousedown', (evt) => this._handleMouseClose(evt));
+		this._popup.addEventListener('mousedown', (evt) => this._handleMouseClose(evt));
 	}
 }
