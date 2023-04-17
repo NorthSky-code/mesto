@@ -1,3 +1,14 @@
+fetch('https://nomoreparties.co/v1/cohort-64/users/me', {
+	headers: {
+		authorization: 'ed50e778-664c-4bb0-b542-3c1eeacf1196'
+	}
+})
+
+	.then(res => res.json())
+	.then((result) => {
+		console.log(result)
+	});
+
 import './index.css';
 
 /** Подключаем модули */
