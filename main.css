@@ -690,6 +690,18 @@ template {
 	text-rendering: optimizeLegibility;
 	color: #000000;
 }
+.card__like {
+	display: flex;
+	margin-bottom: 3px;
+}
+.card__like-number {
+	width: 10px;
+	height: 13px;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 16px;
+	color: #000000;
+}
 .footer {
 	max-width: 880px;
 	margin: 0 auto 60px;
