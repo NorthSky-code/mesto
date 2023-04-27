@@ -584,7 +584,7 @@ template {
 	height: 19px;
 	max-width: 100%;
 	margin-bottom: 3px;
-	background: url(cbed5331d270056562b2.svg);
+	background: url(bf45e82757b0b9e50dfb.svg);
 	background-size: 22px 19px;
 }
 
@@ -592,7 +592,7 @@ template {
 	opacity: 0.5;
 }
 .button__like_active {
-	background: url(dd6a61e81552be95f4b7.svg);
+	background: url(e787eeb70bb65b7b453a.svg);
 }
 .button__delete {
 	position: absolute;
@@ -600,7 +600,7 @@ template {
 	height: 19px;
 	top: 20px;
 	right: 20px;
-	background-image: url(ce3b64935accf9b8212e.svg);
+	background-image: url(823b0cf1b0b7e9cb7cad.svg);
 }
 .button__delete_deactivation {
 	display: none;
@@ -610,7 +610,7 @@ template {
 	height: 24px;
 	border: 1px solid;
 	margin-top: 15px;
-	background-image: url(6c7bf05444b9793fdf6e.svg);
+	background-image: url(8667ac4a523e8fc42e59.svg);
 	background-size: 10px;
 }
 
@@ -626,7 +626,7 @@ template {
 	width: 150px;
 	height: 50px;
 	border: 2px solid;
-	background-image: url(bed8c136e13907f5eefb.svg);
+	background-image: url(d86bb2edc2f6eadb96b7.svg);
 	background-size: 22px;
 }
 
@@ -642,7 +642,7 @@ template {
 	height: 32px;
 	right: -40px;
 	top: -40px;
-	background-image: url(039f1f5203f653b4bacd.svg);
+	background-image: url(2ceb783afbab75916ddc.svg);
 }
 
 @media screen and (max-width: 767px) {
