@@ -1,26 +1,11 @@
-import Popup from './Popup.js';
+import Popup from './Popup';
 
-export default class PopupWithForm extends Popup {
+export default class PopupDelete extends Popup {
 	constructor({ popupSelector, submitForm }) {
 		super(popupSelector);
 		this._submitForm = submitForm;
 		this._form = this._popup.querySelector('.popup__content');
-		this._inputList = this._form.querySelectorAll('.popup__input');
 		this._submitButton = this._popup.querySelector('.popup__submit');
-	}
-
-	_getInputValues() {
-		this._formValues = {};
-		this._inputList.forEach((input) => {
-			this._formValues[input.name] = input.value;
-		});
-		return this._formValues;
-	}
-
-	setInputValues(data) {
-		this._inputList.forEach((input) => {
-			input.value = data[input.name];
-		});
 	}
 
 	setEventListeners() {
@@ -28,8 +13,8 @@ export default class PopupWithForm extends Popup {
 		this._form.addEventListener('submit', (evt) => {
 			evt.preventDefault();
 			const initialText = this._submitButton.textContent;
-			this._submitButton.textContent = 'Сохранение...';
-			this._submitForm(this._getInputValues())
+			this._submitButton.textContent = 'Удаление...';
+			this._submitForm(this._cardId, this._card)
 				.then(() => this.close())
 				.finally(() => {
 					this._submitButton.textContent = initialText;
@@ -37,8 +22,13 @@ export default class PopupWithForm extends Popup {
 		});
 	}
 
+	open(cardId, card) {
+		super.open();
+		this._cardId = cardId;
+		this._card = card;
+	}
+
 	close() {
 		super.close();
-		this._form.reset();
 	}
 }
