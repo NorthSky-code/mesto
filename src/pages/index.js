@@ -13,8 +13,6 @@ import Api from '../components/Api.js';
 /** Подключаем переменные */
 import {
 	popupFormProfile,
-	popupUserName,
-	popupUserJob,
 	popupFormCard,
 	popupFormEditAvatar,
 	buttonOpenProfile,
@@ -56,11 +54,9 @@ popupUserAvatarValidation.enableValidation();
 /** Открыть модальное окно */
 const handleOpenProfile = () => {
 	popupFormProfileSubmit.open();
-	/*
 	const user = editUserProfile.getUserInfo();
-	popupUserName.value = user.name;
-	popupUserJob.value = user.job;
-	*/
+	popupFormProfileSubmit.setInputValues(user);
+
 	popupProfileValidation.enableButton();
 	popupProfileValidation.resetError();
 }

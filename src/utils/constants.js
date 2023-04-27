@@ -21,8 +21,6 @@ const validationConfig = {
 
 export {
 	popupFormProfile,
-	popupUserName,
-	popupUserJob,
 	popupFormCard,
 	popupFormEditAvatar,
 	buttonOpenProfile,
