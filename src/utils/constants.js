@@ -1,8 +1,6 @@
 /** Переменные */
 const container = document.querySelector('.content');
 const popupFormProfile = document.querySelector('.popup__content-profile');
-const popupUserName = popupFormProfile.querySelector('.popup__input_user_name');
-const popupUserJob = popupFormProfile.querySelector('.popup__input_user_job');
 const buttonOpenProfile = container.querySelector('.button_type_edit');
 const popupFormCard = document.querySelector('.popup__content-card');
 const buttonAddCard = container.querySelector('.button_type_add');

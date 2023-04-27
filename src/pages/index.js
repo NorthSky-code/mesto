@@ -56,7 +56,6 @@ const handleOpenProfile = () => {
 	popupFormProfileSubmit.open();
 	const user = editUserProfile.getUserInfo();
 	popupFormProfileSubmit.setInputValues(user);
-
 	popupProfileValidation.enableButton();
 	popupProfileValidation.resetError();
 }
